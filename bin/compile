@@ -91,6 +91,8 @@ EOF
 mkdir -p "$CACHE_DIR"
 cd "$CACHE_DIR"
 
+ls -l "$CACHE_DIR"
+
 # Make sure we have an appropriate Rust toolchain installed.
 if [ -d "$CARGO_HOME" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
