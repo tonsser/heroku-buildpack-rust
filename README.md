@@ -1,3 +1,11 @@
+## Notice
+
+This buildpack was designed to only work the Tonsser API so don't expect it to
+work with your project. However you're welcome to look at the change we've made
+to make it work with Helix.
+
+---
+
 This is a Heroku buildpack for Rust with support for [cargo][]
 and [rustup][], which seems to be the future of Rust deployment as of the
 fall of 2016.  Features include:
