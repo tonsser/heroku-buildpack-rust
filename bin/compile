@@ -136,10 +136,13 @@ if [ $RUST_SKIP_BUILD -ne 1 ]; then
   mkdir -p target/release
   find "$CARGO_TARGET_DIR/release" -maxdepth 1 -type f -executable -exec cp -a -t target/release {} \;
 
-  # Copy the build artifacts into the Rails folders, so when we later run `rails build`
-  # it will reuse those artifacts and do a fast incremental build.
-  mkdir -p $BUILD_DIR/crates/rust_on_rack/target/release
-  cp -R $CARGO_TARGET_DIR $BUILD_DIR/crates/rust_on_rack/
+  if [ $ADMIN_USERNAME -eq "admin" ]; then
+    mkdir -p $BUILD_DIR/crates/rust_on_rack/target/release
+    cp -R $CARGO_TARGET_DIR $BUILD_DIR/crates/rust_on_rack/
+  else
+    mkdir -p $BUILD_DIR/crates/hello_world/target/release
+    cp -R $CARGO_TARGET_DIR $BUILD_DIR/crates/hello_world/
+  fi
 else
   echo "-----> Skipping Cargo build"
 fi
